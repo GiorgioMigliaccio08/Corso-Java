@@ -4,3 +4,4 @@ di creare ,compilare, testare ed anche debaggare applicazioni Java.*/
 
 
 //Commento su singola linea
+/* Commento du multilinea */
