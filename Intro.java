@@ -69,3 +69,62 @@ public class IlMioPrimoProjJava {
  
 }
 */
+
+// Le variabili devono avere nomi diversi
+  // NON POSSONO ESISTERE DUE VARIABILI CON LO STESSO NOME!
+  
+  // Le variabili sono associate al tipo di dati con cui le dichiariamo
+  // int = numeri interi
+  // double = numeri decimali
+  // String = stringhe di testo
+  // e così via...
+  
+  // esistono variabili primitive e variabili di riferimento o oggetti
+  // le primitive sono i tipi base, gli oggetti sono le classi
+  // Le variabili primitive sono:
+  // byte, short, int, long, float, double, char, boolean
+  // Le variabili di riferimento sono gli oggetti, ad esempio String, Scanner, ecc.
+  
+  // vediamo i tipi primitivi
+  // byte = 1 byte = 8 bit può contenere valori numerici interi da -128 a 127
+  // short = 2 byte = 16 bit può contenere valori numerici interi da -32.768 a 32.767
+  // int = 4 byte = 32 bit può contenere valori numerici interi da -2.147.483.648 a 2.147.483.647
+  // long = 8 byte = 64 bit può contenere valori numerici interi da -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807
+  
+  // float = 4 byte = 32 bit può contenere valori numerici con decimali da -3.40282347E+38 a 3.40282347E+38
+  // double = 8 byte = 64 bit può contenere valori numerici con decimali da -1.79769313486231570E+308 a 1.79769313486231570E+308 
+  // char = 2 byte = 16 bit può contenere un carattere Unicode ('A', 'b', 'x', '@') e si può indicare i caratteri anche con i codici esadecimali e va da '\u0000' a '\uffff'
+
+  // boolean = 1 byte = 8 bit può contenere solo due valori: true o false
+  // true significa vero, false significa falso
+  // rappresenta un valore logico, ad esempio se una condizione è vera o falsa
+  
+  int a = 10; // dichiarazione e inizializzazione della variabile a
+  int b = 20; // dichiarazione e inizializzazione della variabile b
+  // qualche esempio con i double
+  double c = 10.5; // dichiarazione e inizializzazione della variabile c dentro ora ha 10.5
+  double d = 20.5; // dichiarazione e inizializzazione della variabile d dentro ora ha 20.5
+  
+  // i float sono simili ai double ma hanno meno precisione, meno cifre dopo la virgola.
+  // inoltre le variabili float hanno bisogno di una lettera f alla fine del numero a cui le assegnamo
+  
+  // se voglio dichiarare una variabile float e 
+  // metterci dentro 10.5, devo crearla float e  e  poi ci associo 10.5 segito da f
+  // questo perchè JAVA normalmente se scrive 10.5 lo interpreta come un double
+  // e questo può creare problemi... perchè i float sono incompatibili normalmente... hanno bisogno della f
+  
+  
+  float e = 10.5f; // dichiarazione e inizializzazione della variabile e dentro ora ha 10.5
+  
+  // se però metto dei valori dentro le variabili di tipo double a e b, dopo tra loro si possono assegnare senza f
+  
+  double f = e; // dichiarazione e inizializzazione della variabile f dentro ora ha 10.0
+  
+  // DENTRO un double o un float posso mettere anche un int
+  
+  double g = a; // dichiarazione e inizializzazione della variabile g dentro ora ha 10.0
+  // o esempio con numero
+  
+  double h = 10; // dichiarazione e inizializzazione della variabile h dentro ora ha 10.0
+  // e non serve la f con i float
+  float i = 10; // dichiarazione e inizializzazione della variabile i dentro ora ha 10.0
