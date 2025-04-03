@@ -38,3 +38,34 @@ public class IlMioPrimoProjJava {
  
 }
 */
+
+/*
+import java.util.Scanner;
+
+public class IlMioPrimoProjJava {
+
+ public static void main(String[] args) {
+  
+  
+  
+  Scanner input = new Scanner(System.in);
+  System.out.println("Inserisci il tuo nome");
+  
+  String nome = input.nextLine();
+  
+  System.out.println("Inserisci la tua altezza in metri");  
+  double altezza = input.nextDouble();
+  input.nextLine();
+  
+  System.out.println("Quanti anni hani?");
+  int anni = input.nextInt();
+  input.nextLine();
+  
+  
+  System.out.println("Dunque, ti chiami "+nome+" e hai "+anni+" anni e sei alto/a "+altezza);
+  
+  
+ }
+ 
+}
+*/
