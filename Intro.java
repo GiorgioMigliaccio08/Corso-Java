@@ -128,3 +128,88 @@ public class IlMioPrimoProjJava {
   double h = 10; // dichiarazione e inizializzazione della variabile h dentro ora ha 10.0
   // e non serve la f con i float
   float i = 10; // dichiarazione e inizializzazione della variabile i dentro ora ha 10.0
+
+
+// in java ogni confronto da per risultato un booleano
+  
+  // possiamo quindi salvarlo in una variabile booleana
+  
+  boolean risultato = 5 > 3; // maggiore
+  boolean risultato2 = 5 < 3; // minore
+  boolean risultato3 = 5 == 3; // uguale
+  boolean risultato4 = 5 != 3; // diverso
+  boolean risultato5 = 5 >= 3; // maggiore o uguale
+  boolean risultato6 = 5 <= 3; // minore o uguale
+
+  import java.util.Scanner;
+
+public class IlMioPrimoProjJava {
+
+ public static void main(String[] args) {
+  
+  // In java è possibile eseguire dei blocchi di codice 
+  // solo in certi casi...
+  // quando una certa condizione è vera o falsa
+  
+  // per esempio, 
+  int a = 40;
+  if (a>10)
+  {
+   System.out.println("a è maggiore di 10");
+  }
+  else
+  {
+   System.out.println("a è minore di 10");
+  }
+  
+  
+  // è possibile che operare più controlli se - allora -se 
+  
+  if (a>10)
+  {
+   System.out.println("a è maggiore di 10");
+  }
+  else if (a<10)
+  {
+   System.out.println("a è minore di 10");
+  }
+  else
+  {
+   System.out.println("a è uguale a 10");
+  }
+ }
+ 
+}
+
+//ESERCIZIO 1
+
+
+import java.util.Scanner;
+
+public class App {
+
+ public static void main(String[] args) {
+  
+  Scanner input = new Scanner(System.in);
+  System.out.println("Ciao come ti chiami?");
+  String nome = input.nextLine();
+  
+  System.out.println("Ciao "+nome+". E' bello vedere che sei ancora vivo...");
+  System.out.println("e dimmi, "+nome+"...ti senti vivo?");
+  String scelta = input.nextLine().toLowerCase();
+  input.nextLine();
+  
+  
+  
+  if(scelta.equals("si")) {
+   System.out.println("Ok! Sei vivo! Non mollare prof "+nome+ "");
+  }
+  else if (scelta.equals("no")) {
+   System.out.println("Oh no! Forse dovresti prenderti un altra pausa... e bere meno caffè... xD");
+  }
+  else {
+   System.out.println("non ho ben capito, ma spero che tu stia bene!");
+  }
+  }
+
+}
