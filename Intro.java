@@ -254,3 +254,24 @@ Scanner input;
   // anche le altre variabili, quelle primarie si possono inizializzare in questo modo
   // int numero = 0;
   // double prezzo = 5.5;
+
+  // per fare questo useremo una classe per l'Input.
+  // La classe Scanner
+  // Scanner è una classe e quindi ci può permettere di creare
+  // un oggetto, una variabile oggetto (o variabile per riferimento).
+  
+     // Creiamo la variabile oggetto che ci servirà per richiedere l'inserimento
+  // di un INPUT Dati da tastiera.
+  
+  // Scegliamo un nome per la variabile oggetto.
+  // DATO che servirà ad acquisire un input da tastiera
+  // SUGGERERIREI un nome che ci ricordi a che cosa serve
+  // magari input o tastiera... oppure potremmo chiamarla scanner.
+  // Attenzione so che scanner sembra il nome della classe, ma questa si chiama
+  // Scanne (con la S  maiuscola). JAVA è case sensitive, quindi per lui maiuscole e minuscole
+  // fanno differenza. Sono lettere diverse.
+  // Scanner e scanner sono due parole diverse.
+  // Scanner è il nome della classe
+  // quindi potremmo anche chiamarla scanner
+  // oppure possiamo preferire scannerInput o inputScanner
+  // o come abbiamo detto prima input o tastiera.
