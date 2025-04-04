@@ -213,3 +213,44 @@ public class App {
   }
 
 }
+
+Scanner input;
+  // ok, però, a differenza delle variabili primare, come int, double e simili...
+  // Scanner è una CLASSE e non un tipo primitivo...
+  // Ed è una di quelle che non ha l'istanziamento implicito...
+  // Cosa vuol dire?
+  // Significa che deve essere ISTANZIATA
+  
+  // infatti è come se, scrivendo Scanner input; avessi solo "prenotato" il nome input per essere
+  // un oggetto Scanner
+  // ma un oggetto Scanner in realtà occupa una certa MEMORIA
+  // Memoria che ancora non è stata allocata (cioè messa da parte per questa variabile)
+  // Per allocarla, devo usare il costruttore in new che vuol dire "nuovo" (producine uno nuovo)...
+  // new seguito dal nome della classe che devo  istanziare
+  // new Scanner();
+  // Poi, come per alcuni altri oggetti (non tutti) serve di indicare la configurazione...
+  // Infatti quando facciamo new NOMECLASSE() oltre ad allocare memoria
+  // Stiamo anche invocando una cosa che si chiama COSTRUTTORE
+  // che è un metodo che prepara anche l'oggetto per essere usato, non si limita a allocare memoria
+  // e talvolta questo metodo richiede dei parametri
+  
+  // nel caso di Scanner li richiede perchè la classe Scanner può creare degli oggetti Scanner
+  // per più cose... oggetti che a seconda di come vengono organizzati possono 
+  // leggere da tastiera (che è ciò che vogliamo fare noi) o da file o da rete  o altro..
+  // quindi nel costruttore new Scanner() dobbiamo inserire un parametro che indica
+  // che ci serve per l'input da tastiera.
+  // CHI ha creato questa classe l'ha pensata in modo che il parametro che dobbiamo passare
+  // è un oggetto. L'oggetto che ci serve è System.in
+  // QUesto oggetto farà capire alla classe Scanner che noi vogliamo leggere da tastiera
+  // e questa predisporrà l'oggetto per questo scopo
+  
+  // Quindi la riga di codice che ci serve è:
+  
+  input = new Scanner(System.in);
+  
+  // Avremmo potuto farlo anche su una sola riga
+  // Scanner input = new Scanner(System.in);
+  
+  // anche le altre variabili, quelle primarie si possono inizializzare in questo modo
+  // int numero = 0;
+  // double prezzo = 5.5;
