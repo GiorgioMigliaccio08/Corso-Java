@@ -316,3 +316,21 @@ Scanner input;
   // anche le altre variabili, quelle primarie si possono inizializzare in questo modo
   // int numero = 0;
   // double prezzo = 5.5;
+
+  // con il metodo nextLine() leggo una riga di testo     
+  // quello che ottengo è una stringa
+  // servirà una variabile stringa
+  
+  // SE PERO voglio leggere un numero e farlo finire dentro una variabile di tipo int
+  // devo usare il metodo nextInt() o nextLine() recuperando una stringa e poi convertire la stringa in int
+  
+  // Occhio che nextInt() non legge gli spazi, ma soprattutto lascia sporca la memoria della tastiera...
+  // si dice in termine tecnico che lascia il buffer sporco
+  // e per pulirlo bisogna usare nextLine() subito dopo. Visivamente non si vedrà capitare nulla
+  // ma serve a pulire il buffer. Se non si fa, nel caso usassimo un nextLine successivamente
+  // per leggere la tastiera non funzionerà.
+
+  // In pratica il primo nextLine() dopo nextInt() non funziona!
+  // QUINDI se non c'è nessun nextLine() dopo nextInt() non c'è problema
+  // ma se ci serve di usare un nextLine() dopo un nextInt() dobbiamo pulire il buffer
+  // e allora, dato che il primo nextLine() non funziona, lo facciamo subito dopo il nextInt()
