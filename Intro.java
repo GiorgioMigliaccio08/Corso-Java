@@ -334,3 +334,16 @@ Scanner input;
   // QUINDI se non c'è nessun nextLine() dopo nextInt() non c'è problema
   // ma se ci serve di usare un nextLine() dopo un nextInt() dobbiamo pulire il buffer
   // e allora, dato che il primo nextLine() non funziona, lo facciamo subito dopo il nextInt()
+
+  // Qualunque programma serio ha bisogno di un INPUT
+  // cioè serve che dei dati vengano introdotti nel programma dall'esterno
+  // magari leggendo i dati da un file, leggendo i dati da un server
+  // leggendo i dati da tastiera (che vuol dire che li inserisce l'utente che usa il programma)
+  
+  // Noi ora impareremo l'input da tastiera
+  
+  // In pratica significa che impariamo a realizzare dei programmi
+  // che saranno in grado di chiedere all'utente di inserire dei dati
+  // questo li inserirà da tastiera e questi dati finiranno dentro delle variabili del programma
+  // e dopo il nostro programma le potrà usare...
+  
