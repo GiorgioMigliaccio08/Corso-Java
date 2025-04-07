@@ -426,3 +426,40 @@ Scanner input;
   // QUINDI se non c'è nessun nextLine() dopo nextInt() non c'è problema
   // ma se ci serve di usare un nextLine() dopo un nextInt() dobbiamo pulire il buffer
   // e allora, dato che il primo nextLine() non funziona, lo facciamo subito dopo il nextInt()
+
+import java.util.Scanner;
+
+public class App {
+
+ public static void main(String[] args) {
+  
+  Scanner input = new Scanner(System.in);
+        
+  System.out.println("Questo programma chiederà 10 volte di inserire un numero INTERO");
+  System.out.println("Potrai inserire un numero pari o dispari (fai tu)");
+  System.out.println("Alla fine ti dirò quanti numeri dispari hai inerito e quanti pari");
+  
+  int contaPari   = 0;
+  int contaDispari  = 0;
+  
+  for (int i=0;i<10;i++)
+  {
+   System.out.println("Inserisci un numero intero a caso");
+   int num = input.nextInt();
+   input.nextLine();
+   
+   if (num%2 == 0) {
+    contaPari++;
+   }
+   else
+   {
+    contaDispari++;         
+   }   
+  }
+  
+  System.out.println("Hai inserito " + contaPari + " numeri pari");
+  System.out.println("Hai inserito " + contaDispari + " numeri dispari");
+
+ }
+
+}
