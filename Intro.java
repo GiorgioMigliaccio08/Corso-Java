@@ -463,3 +463,31 @@ public class App {
  }
 
 }
+
+import java.util.Scanner;
+
+public class Palindromo {
+
+ public static void main(String[] args) {
+  
+  Scanner input = new Scanner(System.in);
+  System.out.println("Inserisci una parola");
+  
+  String parola = input.nextLine();
+  
+  System.out.println("La parola inserita ha lunghezza "+parola.length());
+  System.out.println("Ora vesiamo se è o meno palindroma");
+  parola = parola.toUpperCase();
+  String parola_al_contrario = "";
+  
+  for (int i = parola.length()-1; i>=0; i--) {
+   parola_al_contrario = parola_al_contrario + parola.charAt(i); 
+  }
+  
+  if (parola.equals(parola_al_contrario)) {
+   System.out.println("La parola è palindroma");
+  } else {
+   System.out.println("La parola non è palindroma");
+  }
+ }
+}
