@@ -640,3 +640,74 @@ public class PasswordGenerator {
  }
 
 }
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class PasswordGenerator {
+
+ 
+ public static int numerocasuale(int min, int max) {
+  // Restituisce un numero casuale compreso tra 0 e 100
+  Random R = new Random();
+  int n = R.nextInt(max - min + 1) + min;
+  return n;
+ }
+ 
+ public static void main(String[] args) {
+  int scelta;
+  Scanner input = new Scanner(System.in);
+  do
+  {
+   System.out.println("1. GENERA NUOVA PASSWORD");
+   System.out.println("2. ESCI");
+    do
+    {
+     System.out.println("SCEGLI UN'OPZIONE:");                
+                 scelta = input.nextInt();
+                 input.nextLine(); // Consuma il newline rimasto nel buffer
+                 if (scelta != 1 && scelta != 2)
+                    {
+                        System.out.println("Opzione non valida, riprova.");
+                    }
+             } while (scelta != 1 && scelta != 2);
+   if (scelta==1)
+   {
+    int lunghezza;
+    do
+    {
+     System.out.println("Inserisci la lunghezza della password (minimo 8 caratteri):");
+     lunghezza = input.nextInt();
+     input.nextLine(); // Consuma il newline rimasto nel buffer
+     if (lunghezza < 8)
+                    {
+                        System.out.println("Lunghezza non valida, riprova.");
+                    }
+    } while (lunghezza < 8);
+    
+    String alfabeto = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+    String password = "";
+    int da = 0;
+    int a = alfabeto.length() - 1;
+    for (int i=0;i<lunghezza;i++)
+    {
+     int posizionecasuale = numerocasuale(da, a);
+     char ch = alfabeto.charAt(posizionecasuale);
+     password += ch;
+    }
+    System.out.println("PASSWORD GENERATA: " + password);
+    
+       
+   }
+   
+   if (scelta !=2)
+   {
+    System.out.println("...PREMI INVIO PER TORNARE AL MENU");
+    input.nextLine(); // Aspetta che l'utente prema INVIO
+   }
+   
+  } while (scelta != 2);
+  System.out.println("Ciao ciao.");
+ }
+
+}
