@@ -711,3 +711,66 @@ public class PasswordGenerator {
  }
 
 }
+
+package numerocasualeminmax;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+ 
+ public static int numerocasuale(int min, int max) {
+  // Restituisce un numero casuale compreso tra 0 e 100
+  Random R = new Random();
+  int n = R.nextInt(max - min + 1) + min;
+  return n;
+ }
+ 
+ public static void main(String args[]) {
+  Scanner input = new Scanner(System.in);
+  String rispostaripeti;
+  
+  do {
+    System.out.println("Inserisci il minimo");
+    
+    int min = input.nextInt();
+    input.nextLine(); // Consuma il newline rimasto nel buffer
+    
+    System.out.println("Inserisci il massimo");
+    int max = input.nextInt();
+    input.nextLine(); // Consuma il newline rimasto nel buffer
+    
+    int n = numerocasuale(min, max);
+    
+    System.out.println("Ora indovina... quale numero è stato estratto (tra " + min + " e " + max + ")? ");
+    int tentativo;
+    
+   
+    tentativo = input.nextInt();
+    input.nextLine(); // Consuma il newline rimasto nel buffer
+  
+    if (tentativo < min || tentativo > max) {
+     System.out.println("Numero non valido, sei al di fuori dei limiti che tu stesso/a hai dato riprova.");
+    } else if (tentativo == n) {
+     System.out.println("Hai indovinato! Il numero era " + n);
+    } else {
+     System.out.println("Hai sbagliato! Il numero era " + n);
+    }
+    
+    do {
+     System.out.println("Vuoi ripetere? (si/no)");    
+     rispostaripeti = input.nextLine().toLowerCase().trim();
+                    if (!rispostaripeti.equalsIgnoreCase("si") && !rispostaripeti.equalsIgnoreCase("no")) {
+                        System.out.println("Risposta non valida, riprova.");
+                    }
+                } while (!rispostaripeti.equalsIgnoreCase("si") && !rispostaripeti.equalsIgnoreCase("no"));
+    
+  } while (rispostaripeti.equalsIgnoreCase("si"));
+
+  
+ }
+  
+  
+  
+
+}
