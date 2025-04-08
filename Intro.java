@@ -774,3 +774,42 @@ public class Main {
   
 
 }
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+ public static void main(String[] args) {
+  // TODO Auto-generated method stub
+  
+  Random numeriCasuali = new Random(); 
+  Scanner numeroInput = new Scanner (System.in);  
+  
+  System.out.println("tenta la fortuna in 20 estrazioni : ");
+  
+  for(int i=20; i>=0 ;i--) {
+    int c =numeriCasuali.nextInt(6) + 1;
+    System.out.println("(pssst: il numero è "+c+", ma non dirlo a nessuno");
+    System.out.println("Inserisci il tuo numero : ");
+    int input = numeroInput.nextInt();
+    numeroInput.nextLine();
+    System.out.println("il tuo numero è: " + input);
+     
+    int cont =20;
+     
+    if (input < 1 || input > 6){
+                      System.out.println("Numero non valido,inserisci un numero  compreso da 1 a 6.");
+    }    
+    
+    System.out.println("il numero fortunato del dado era :" + c);     
+               
+    if(input == c){
+        System.out.println("Bravo hai vinto");
+        break;  // termino il ciclo
+         }    
+    
+    System.out.println("hai ancora " + i + " tentativi, riprova ");    
+  } 
+ }
+}
