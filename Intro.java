@@ -869,3 +869,72 @@ public class MuliClassProject01 {
  }
 
 }
+
+public class Persona {
+ public String nome;
+ public String cognome;
+ private int anni;
+ 
+ 
+ public Persona()
+ {
+  this.nome = "";
+  this.cognome = "";
+  this.anni = 0;
+ }
+ 
+ public Persona(String nome, String cognome, int anni) {
+  this();
+  this.nome = nome;
+  this.cognome = cognome;
+  this.anni = anni;
+ }
+ 
+ public boolean isAdult() {  
+  return this.anni >= 18;
+ }
+ 
+ 
+ @Override
+ public String toString() {
+  return "Persona [nome=" + nome + ", cognome=" + cognome + ", anni=" + anni + "]";
+ }
+ 
+ public String getNome() {
+  
+  return nome;
+ }
+
+ public boolean setNome(String nome) {
+  if (nome.length() > 0 && nome.length() < 50) {
+   this.nome = nome;
+   return true;
+  }
+  return false;  
+ }
+ 
+ public String getCognome() {
+  return cognome;
+ }
+ 
+ public boolean setCognome(String cognome) {
+  if (cognome.length() > 0 && cognome.length() < 50) {
+   this.cognome = cognome;
+   return true;
+  }
+  return false;
+ }
+  
+ public boolean setAnni(int anni) {
+  if (anni >= 0 && anni <= 120) {
+                this.anni = anni;   
+                return true;
+        }
+  return false;
+ }
+ 
+ public int getAnni() {
+  return anni;
+ }
+
+}
