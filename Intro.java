@@ -999,3 +999,85 @@ public class Conto {
  
  
 }
+
+public class Conto {
+ private String intestario;
+ private double saldo;
+ private double tassoInteresse; // es. 1.5 per l'1.5%
+ 
+ public Conto() {
+  this.intestario = "";
+  this.saldo = 0;
+  this.tassoInteresse = 0;
+ }
+ public Conto(String intestario, double saldo, double tassoInteresse) {
+  this();
+  this.setIntestario(intestario);
+  this.setSaldo(saldo);
+  this.setTassoInteresse(tassoInteresse);  
+ }
+ public String getIntestario() {
+  return intestario;
+ }
+ public void setIntestario(String intestario) {
+  this.intestario = intestario;
+ }
+ public double getSaldo() {
+  return saldo;
+ }
+ public void setSaldo(double saldo) {
+  this.saldo = saldo;
+ }
+ public double getTassoInteresse() {
+  return tassoInteresse;
+ }
+ public void setTassoInteresse(double tassoInteresse) {
+  this.tassoInteresse = tassoInteresse;
+ }
+ 
+ 
+ public boolean deposita(double importo)
+ {
+  if (importo > 0) {
+            this.saldo += importo;
+            return true;
+        }
+        return false;
+ }
+ 
+ public boolean preleva(double importo) {
+  if (importo > 0 && this.saldo >= importo) {
+   this.saldo -= importo;
+   return true;
+  }
+  return false;
+ }
+ 
+ 
+ public void applicaInteresse() {
+  this.saldo += this.saldo * (this.tassoInteresse / 100);
+ }
+ 
+ 
+}
+
+public class Main {
+
+ public static void main(String[] args) {
+  
+  
+  Conto c1 = new Conto("Mario Rossi", 1000, 1.5);
+  
+  
+  System.out.println("Saldo c1 (intestatario "+c1.getIntestario()+": " + c1.getSaldo()+" euro");
+  c1.applicaInteresse();
+  System.out.println("Saldo c1 (intestatario "+c1.getIntestario()+": " + c1.getSaldo()+" euro");
+  c1.deposita(500);
+  System.out.println("Saldo c1 (intestatario "+c1.getIntestario()+": " + c1.getSaldo()+" euro");
+  c1.preleva(200);
+  System.out.println("Saldo c1 (intestatario "+c1.getIntestario()+": " + c1.getSaldo()+" euro");
+  c1.applicaInteresse();
+  System.out.println("Saldo c1 (intestatario "+c1.getIntestario()+": " + c1.getSaldo()+" euro");
+ }
+
+}
