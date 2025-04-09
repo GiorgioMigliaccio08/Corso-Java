@@ -813,3 +813,59 @@ public class Main {
   } 
  }
 }
+
+public class Persona {
+ public String nome;
+ public String cognome;
+ public int anni;
+ 
+ 
+ public Persona()
+ {
+  this.nome = "";
+  this.cognome = "";
+  this.anni = 0;
+ }
+ 
+ public Persona(String nome, String cognome, int anni) {
+  this();
+  this.nome = nome;
+  this.cognome = cognome;
+  this.anni = anni;
+ }
+ 
+ public boolean isAdult() {  
+  return this.anni >= 18;
+ }
+ 
+ 
+ @Override
+ public String toString() {
+  return "Persona [nome=" + nome + ", cognome=" + cognome + ", anni=" + anni + "]";
+ }
+ 
+ 
+
+}
+
+public class MuliClassProject01 {
+
+ public static void main(String[] args) {
+        
+  Persona p1 = new Persona("Marco", "Rossi", 20);
+  
+  
+  
+  if (p1.isAdult()) {
+   System.out.println("La persona è maggiorenne");
+  } else {
+   System.out.println("La persona è minorenne");
+  }
+  
+  System.out.println(p1);
+ 
+  
+
+ }
+
+}
