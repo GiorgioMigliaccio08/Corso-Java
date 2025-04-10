@@ -1214,3 +1214,75 @@ public class IO {
  
   
 }
+
+import java.util.Scanner;
+
+import classiMie.IO;
+
+public class Main {
+
+ public static void main(String[] args) {
+  int ngiorno;
+  do {
+    IO.println("Inserisci un numero che corrisponde ad un giorno della settimana (1-7):");
+    ngiorno = IO.getInt("Inserisci un numero!");
+    if (ngiorno < 1 || ngiorno > 7) {
+     IO.println("Il numero non corrisponde ad un giorno della settimana");   
+    }
+    }while (ngiorno < 1 || ngiorno > 7);
+  
+  // quando arriviamo qua il numero è corretto ngiorno contiene un numero da 1 a 7
+  // ora con l'if-else scriveremmo
+  
+ /* if (ngiorno == 1) {
+   IO.println("Hai scelto Lunedi");
+  } 
+  else if (ngiorno == 2) {
+   IO.println("Hai scelto Martedi");
+  } 
+  else if (ngiorno == 3) {
+   IO.println("Hai scelto Mercoledi");
+  } 
+  else if (ngiorno == 4) {
+   IO.println("Hai scelto Giovedi");
+  } 
+  else if (ngiorno == 5) {
+   IO.println("Hai scelto Venerdi");
+  } 
+  else if (ngiorno == 6) {
+   IO.println("Hai scelto Sabato");
+  } 
+  else {
+   IO.println("Hai scelto Domenica");
+  }
+  */
+  
+  // con lo switch scriviamo
+  
+  switch (ngiorno) {
+  
+  case 1:
+   IO.println("Hai scelto Lunedi");
+   break;
+  case 2:
+   IO.println("Hai scelto Martedi");
+   break;
+  case 3:
+   IO.println("Hai scelto Mercoledi");
+   break;
+  case 4:
+   IO.println("Hai scelto Giovedi");
+   break;
+  case 5:
+   IO.println("Hai scelto Venerdi");
+   break;
+  case 6:
+   IO.println("Hai scelto Sabato");
+   break;
+  default:
+   IO.println("Hai scelto Domenica");
+  
+  }
+ }
+
+}
