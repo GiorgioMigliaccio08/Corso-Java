@@ -1081,3 +1081,25 @@ public class Main {
  }
 
 }
+
+import classiMie.IO;
+
+public class Main {
+
+ public static void main(String[] args) {
+  
+  IO.println("Quanti numeri vuoi inserire? ");
+  int n = IO.getInt("ERRORE! Inserisci un numero!");
+  int[] numeri = new int[n];
+  for (int i = 0; i < n; i++) {
+   IO.println("Inserisci il numero " + (i + 1) + ": ");
+   numeri[i] = IO.getInt("ERRORE! Inserisci un numero!");
+  }
+  IO.println("Hai inserito: ");
+  for (int i = 0; i < n; i++) {
+   IO.println(numeri[i]);
+  }
+  
+ }
+
+}
