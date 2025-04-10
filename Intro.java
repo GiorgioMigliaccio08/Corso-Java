@@ -1103,3 +1103,114 @@ public class Main {
  }
 
 }
+
+package classiMie;
+
+import java.util.Scanner;
+
+public class IO {
+ private static boolean errore;
+ 
+ public static boolean isError() {
+  return errore;
+ }
+
+ public static boolean noError() {
+  return !errore;
+ }
+ 
+ 
+ public static void println(Object testo)
+ {
+  
+  System.out.println(testo);  
+ }
+
+ public static void print(Object testo)
+ {
+  
+  System.out.print(testo);  
+ }
+ 
+ public static String getString()
+ {
+  errore = false;
+  Scanner scanner = new Scanner(System.in);
+  return scanner.nextLine();
+ }
+ 
+ public static int getInt() { 
+  
+  String testo = getString();  
+  int numero = 0;
+  try {
+    numero = Integer.parseInt(testo);
+   } 
+  catch (NumberFormatException e) {
+    
+   errore = true;
+  }
+  return numero;
+ }
+ 
+ public static int getInt(String errormessage)
+ {
+  int numero = getInt();
+  if (errore) {
+   System.out.println(errormessage);
+   numero = getInt(errormessage);
+  }
+  return numero;
+ }
+ 
+ public static double getDouble() {
+  
+  String testo = getString();
+  testo = testo.replace(',', '.'); // sostituisco la virgola con il punto
+  double numero = 0;
+  try {
+   numero = Double.parseDouble(testo);
+  } catch (NumberFormatException e) {
+   // System.out.println("Non hai inserito un numero intero");
+   // numero = getInt();
+   errore = true;
+  }
+  return numero;
+ }
+ 
+ public static double getDouble(String errormessage) {
+  double numero = getDouble();
+  if (errore) {
+   System.out.println(errormessage);
+   numero = getDouble(errormessage);
+  }
+  return numero;
+ }
+ 
+ public static boolean getBoolean() {
+  
+  String testo = getString();
+  boolean valore = false;
+  if (testo.equalsIgnoreCase("true")) {
+   valore = true;
+  } else if (testo.equalsIgnoreCase("false")) {
+   valore = false;
+  } else {
+   errore = true;
+  }
+  return valore;
+ }
+ 
+ public static boolean getBoolean(String errormessage) {
+  boolean valore = getBoolean();
+  if (errore) {
+   System.out.println(errormessage);
+   valore = getBoolean(errormessage);
+  }
+  return valore;
+ }
+ 
+ 
+ 
+  
+}
