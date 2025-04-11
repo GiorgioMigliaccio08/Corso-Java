@@ -1400,3 +1400,51 @@ public class Main {
  }
 
 }
+
+package Dati;
+
+public class Libreria {
+ 
+ private Libro[] ListaLibri;
+ 
+ public Libreria() {
+  this.ListaLibri = new Libro[0];
+ }
+ 
+ public int NumoeroDeiLibri() {
+  return this.ListaLibri.length; 
+ }
+ 
+ public int posizioneUltimLibro() {
+  return this.ListaLibri.length - 1;
+ }
+ public void add(Libro libro)
+ {
+  Libro temp[] = this.ListaLibri;
+  int nuovalunghezza = this.ListaLibri.length + 1;
+  this.ListaLibri = new Libro[nuovalunghezza];
+  int ultima_posizione = this.posizioneUltimLibro();
+  this.ListaLibri[ultima_posizione] = libro;
+  for (int i = 0; i < temp.length; i++) {
+   this.ListaLibri[i] = temp[i];
+  }  
+ }
+
+ public void add(String titolo, String autore, int annoPubblicazione, String casaEditrice) {
+  Libro libro = new Libro();
+  libro.setTitle(titolo);
+  libro.setAuthor(autore);
+  libro.setYear(annoPubblicazione);
+  libro.setPublisher(casaEditrice);
+  this.add(libro);
+ }
+ 
+ 
+ public Libro get(int i) {
+  if (i < 0 || i > this.posizioneUltimLibro()) {
+   return null;
+  }
+  return this.ListaLibri[i];
+ }
+
+}
