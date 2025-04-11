@@ -1377,3 +1377,26 @@ public class Main {
                     libri.add(libro);
                     
     break;
+    case 2:
+     for (int i = 0; i < libri.NumoeroDeiLibri(); i++) {
+      Libro libroVisualizzato = libri.get(i);
+      IO.println(libri.get(i));
+      IO.println("--------------------------");
+     }
+    break;
+
+   }
+   
+   
+    
+   if (scelta!=3)
+   {
+    IO.println("PREMI INVIO PER CONTINUARE...");
+    IO.getString();
+   }
+   
+  } while (scelta != 3);
+
+ }
+
+}
