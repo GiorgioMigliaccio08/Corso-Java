@@ -1330,3 +1330,50 @@ public class Main {
  }
 
 }
+
+import Dati.Libreria;
+import Dati.Libro;
+import classiMie.IO;
+public class Main {
+ 
+ public static Libreria libri;
+ 
+ public static void main(String[] args) {
+  libri = new Libreria();
+  int scelta;
+  do
+  {
+   IO.println("1. Aggiungi libro");
+   IO.println("2. Visualizza libri");
+   IO.println("3. Esci");
+   
+   
+   
+   do
+   {
+    System.out.print("Scelta: ");
+                scelta = IO.getInt("errore, inserisci un numero corretto!");
+                
+                if (scelta < 1 || scelta > 3)
+                    System.out.println("Scelta non valida");
+                
+            } while (scelta < 1 || scelta > 3);
+   
+   switch (scelta) {
+    case 1:
+     Libro libro = new Libro();
+                    IO.println("Inserisci il titolo del libro:");
+                    libro.setTitle(IO.getString());
+                    
+                    IO.println("Inserisci l'autore del libro:");
+                    libro.setAuthor(IO.getString());
+                    
+                    IO.println("Inserisci l'anno di pubblicazione del libro:");
+                    libro.setYear(IO.getInt("errore, inserisci un numero corretto!"));
+                    
+                    IO.println("inserisci la casa editrice del libro:");
+                    libro.setPublisher(IO.getString());
+                    
+                    libri.add(libro);
+                    
+    break;
