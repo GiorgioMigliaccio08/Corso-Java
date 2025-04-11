@@ -1448,3 +1448,68 @@ public class Libreria {
  }
 
 }
+
+package Dati;
+
+public class Libro {
+ private String title;   // Titolo
+ private String author;      // Autore
+ private String publisher; // Casa editrice
+ 
+ private int year;   // Anno
+ 
+ 
+ public Libro()
+ {
+  this.title = "";
+  this.author = "";
+  this.publisher = "";
+  this.year = 0;  
+ }
+ 
+ public Libro(String title, String author, String publisher, int year) {
+  this();
+  this.setTitle(title);
+  this.setAuthor(author);
+  this.setPublisher(publisher);
+  this.setYear(year);  
+ }
+
+ public String getTitle() {
+  return title;
+ }
+
+ public void setTitle(String title) {
+  this.title = title;
+ }
+
+ public String getAuthor() {
+  return author;
+ }
+
+ public void setAuthor(String author) {
+  this.author = author;
+ }
+
+ public String getPublisher() {
+  return publisher;
+ }
+
+ public void setPublisher(String publisher) {
+  this.publisher = publisher;
+ }
+
+ public int getYear() {
+  return year;
+ }
+
+ public void setYear(int year) {
+  this.year = year;
+ }
+ 
+ @Override
+ public String toString() {
+  return "Libro [title=" + title + ", author=" + author + ", publisher=" + publisher + ", year=" + year + "]";
+ }
+ 
+}
