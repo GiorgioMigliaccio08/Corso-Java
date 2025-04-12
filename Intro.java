@@ -1538,3 +1538,45 @@ public class Posto {
  public String getCognome() {
   return cognome;
  }
+
+public void setCognome(String cognome) {
+  this.cognome = cognome;
+ }
+
+ public String getTelefono() {
+  return telefono;
+ }
+
+ public void setTelefono(String telefono) {
+  this.telefono = telefono;
+ }
+ 
+ @Override
+ public String toString() {
+  return "Posto [nome=" + nome + ", cognome=" + cognome + ", telefono=" + telefono + "]";
+ }
+ 
+ public boolean Prenota(String nome, String cognome, String telefono) {
+  if (this.nome.equals("") && this.cognome.equals("") && this.telefono.equals("")) {
+   this.nome = nome;
+   this.cognome = cognome;
+   this.telefono = telefono;
+   return true;
+  } else {
+   return false;
+  }
+ }
+ 
+ public void annullaPrenotazione()
+ {
+  this.nome = "";
+        this.cognome = "";
+        this.telefono = "";    
+ }
+ 
+ public boolean isPrenotato() {
+  return !this.nome.equals("") && !this.cognome.equals("") && !this.telefono.equals("");
+ }
+ 
+ 
+}
