@@ -1514,3 +1514,27 @@ public class Libro {
  
 }
 
+package Dati;
+
+public class Posto {
+ private String nome;
+ private String cognome;
+ private String telefono;
+ 
+ public Posto() {
+  this.nome = "";
+  this.cognome = "";
+  this.telefono = "";
+ }
+
+ public String getNome() {
+  return nome;
+ }
+
+ public void setNome(String nome) {
+  this.nome = nome;
+ }
+
+ public String getCognome() {
+  return cognome;
+ }
