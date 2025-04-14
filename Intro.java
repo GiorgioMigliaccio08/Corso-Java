@@ -1645,3 +1645,71 @@ public class Libro {
  }
  
 }
+
+import java.util.ArrayList;
+import Dati.Persona;
+import classiMie.IO;
+public class ArrayList01 {
+ 
+ public static void main(String[] args) {
+  int scelta;
+  ArrayList<Persona> listaPersone = new ArrayList<>();
+  
+  do
+  {   
+   do {
+     System.out.println("1) Aggiungi persona");
+     System.out.println("2) Stampa persone");
+     System.out.println("3) Esci");
+     
+     scelta = IO.getInt("Errore! Inserire un numero!");
+     if (scelta < 1 || scelta > 3)
+     {
+      System.out.println("Errore! Inserire un numero tra 1 e 3!");
+     }
+   }
+   while (scelta < 1 || scelta > 3);
+   
+   switch (scelta)
+   {
+    case 1:
+     // Aggiungi persona
+     System.out.println("Inserisci i dati della persona:");
+     System.out.print("Nome: ");
+     String nome = IO.getString();
+     System.out.print("Cognome: ");
+     String cognome = IO.getString();
+     System.out.print("Età: ");
+     int anni = IO.getInt("Errore! Inserire un numero intero per l'età!");
+
+     Persona p = new Persona(nome, cognome, anni);
+
+     listaPersone.add(p);
+
+     
+
+     System.out.println("Aggiunta avvenuta con successo!");
+     
+    break;
+ 
+    case 2:
+     // Stampa persone
+     System.out.println("Lista persone:");
+     for (int i = 0; i < listaPersone.size(); i++) {
+      System.out.println(listaPersone.get(i));
+     }
+     
+    break;   
+   }
+   
+  } while (scelta != 3);
+  
+  System.out.println("Arrivederci!");
+  
+
+ 
+  
+
+ }
+
+}
