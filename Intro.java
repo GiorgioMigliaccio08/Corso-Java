@@ -1763,3 +1763,46 @@ public class Persona {
  }
  
 }
+
+import java.util.ArrayList;
+
+public class ArrayList01 {
+
+ public static void main(String[] args) {
+  ArrayList A = new ArrayList();
+  A.add(100);
+  A.add(200);
+  A.add("Pippo");
+  A.add(3.14);
+  A.add(false);
+  A.add("YEEE");
+   
+  Persona p1 = new Persona("Mario", "Rossi", 30);
+  A.add(p1);
+    
+  A.add( new Persona("Giovanni", "Verdi", 25) );
+  
+  int c = A.size();
+  System.out.println("La lista contiene " + c + " elementi.");
+  A.add("Gigi");
+
+  System.out.println("La lista contiene " + A.size() + " elementi.");
+  A.remove(0);
+  System.out.println("La lista contiene " + A.size() + " elementi.");
+  
+  System.out.println(A);
+  
+  System.out.println("Il primo elemento è: " + A.get(0));
+  System.out.println("Il secondo elemento è: " + A.get(1));
+  System.out.println("Il terzo elemento è: " + A.get(2));
+  System.out.println("Il quarto elemento è: " + A.get(3));
+  System.out.println("Il quinto elemento è: " + A.get(4));
+  System.out.println("Il sesto elemento è: " + A.get(5));
+  System.out.println("Il settimo elemento è: " + A.get(6));
+  
+ 
+  
+
+ }
+
+}
