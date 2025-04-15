@@ -2071,3 +2071,58 @@ public class IO {
  
  
 }
+
+package Dati;
+
+import java.io.Serializable;
+
+public class Persona implements Serializable {
+ 
+ private String nome;
+ private String cognome;
+ private String email;
+ 
+ public Persona() {
+  this.nome = "";
+        this.cognome = "";
+        this.email = "";    
+ }
+ 
+ public Persona(String nome, String cognome, String email) {
+  this();
+  this.setNome(nome);
+  this.setCognome(cognome);
+  this.setEmail(email);
+ }
+
+ public String getNome() {
+  return nome;
+ }
+
+ public void setNome(String nome) {
+  this.nome = nome;
+ }
+
+ public String getCognome() {
+  return cognome;
+ }
+
+ public void setCognome(String cognome) {
+  this.cognome = cognome;
+ }
+
+ public String getEmail() {
+  return email;
+ }
+
+ public void setEmail(String email) {
+  this.email = email;
+ }
+ 
+ 
+ @Override
+ public String toString() {
+  return "Nome: " + this.nome + "\nCognome: " + this.cognome + "\nEmail: " + this.email;
+ }
+ 
+}
