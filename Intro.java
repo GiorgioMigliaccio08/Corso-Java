@@ -1854,3 +1854,30 @@ public class Persona {
  }
  
 }
+
+import classiMie.Menu;
+
+public class Prova {
+
+ public static void main(String[] args) {
+  Menu m = new Menu();
+  m.add("Aggiungi un nuovo libro");
+  m.add("Visualizza tutti i libri");
+  m.add("Cerca un libro");
+  m.add("Modifica un libro");
+  m.add("Esci");
+  
+  int scelta;
+  do {
+    scelta = m.executeMenu();
+    
+    
+    
+  } while ( scelta != m.count() );
+  
+  System.out.println("Arrivederci!");
+  
+
+ }
+
+}
