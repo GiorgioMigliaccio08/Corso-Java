@@ -1939,3 +1939,135 @@ public class Menu {
  
  
 }
+
+package classiMie;
+
+import java.util.Scanner;
+
+public class IO {
+ private static boolean errore;
+ 
+ public static boolean isError() {
+  return errore;
+ }
+
+ public static boolean noError() {
+  return !errore;
+ }
+ 
+ 
+ public static void println(Object testo)
+ {
+  
+  System.out.println(testo);  
+ }
+
+ public static void print(Object testo)
+ {
+  
+  System.out.print(testo);  
+ }
+ 
+ public static String getString()
+ {
+  errore = false;
+  Scanner scanner = new Scanner(System.in);
+  return scanner.nextLine();
+ }
+ 
+ public static String getString(String message)
+ {
+  println(message);
+  return getString();
+ }
+ 
+ public static int getInt() { 
+  
+  String testo = getString();  
+  int numero = 0;
+  try {
+    numero = Integer.parseInt(testo);
+   } 
+  catch (NumberFormatException e) {
+    
+   errore = true;
+  }
+  return numero;
+ }
+ 
+ public static int getInt(String message) { 
+  println(message);
+  return getInt();
+ }
+ 
+ public static int getInt(String message, String errormessage)
+ {
+  int numero = getInt(message);
+  if (errore) {
+   System.out.println(errormessage);
+   
+  }
+  return numero;
+ }
+ 
+ 
+ public static int getInt(String message, String errormessage, boolean ripeti)
+ {
+  int res ;
+  
+  res = getInt(message, errormessage);
+  if (ripeti && errore)
+  {
+   res = getInt(message, errormessage, true);
+  }
+  
+  return res;
+ }
+ 
+ 
+ public static double getDouble() {
+
+  String testo = getString();
+  double numero = 0;
+  try {
+   numero = Double.parseDouble(testo);
+  } catch (NumberFormatException e) {
+
+   errore = true;
+  }
+  return numero;
+ }
+ 
+ public static double getDouble(String message) {
+  println(message);
+  return getDouble();
+ }
+ 
+ public static double getDouble(String message, String errormessage) {
+  double numero = getDouble(message);
+  if (errore) {
+   System.out.println(errormessage);
+
+  }
+  return numero;
+ }
+ 
+ public static double getDouble(String message, String errormessage, boolean ripeti) {
+  double res;
+
+  res = getDouble(message, errormessage);
+  if (ripeti && errore) {
+   res = getDouble(message, errormessage, true);
+  }
+
+  return res;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+}
