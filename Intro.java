@@ -2157,3 +2157,76 @@ public class Biblioteca {
 	}
 
 }
+
+package Dati;
+
+public abstract class Utente {
+	private String tipo;
+	private String username;
+	private String nome;
+	private String cognome;
+	
+	
+	public Utente(String tipo, String username, String nome, String cognome) {
+		this.tipo = tipo;
+		this.username = username;
+		this.nome = nome;
+		this.cognome = cognome;
+	}
+
+
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getCognome() {
+		return cognome;
+	}
+
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+	
+	@Override
+	public String toString() {
+		return "Tipo: " + tipo + ", Nome: " + nome + ", Cognome: " + cognome;
+	}
+	
+	
+	public String getRuolo()
+	{
+		return this.tipo;
+    }
+	
+	public abstract String getInfo();
+	
+	
+
+}
