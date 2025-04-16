@@ -2230,3 +2230,61 @@ public abstract class Utente {
 	
 
 }
+
+package classiMie;
+
+import java.util.ArrayList;
+
+public class Menu {
+	private ArrayList<String> items;
+	
+	public Menu() {
+		this.items = new ArrayList<String>();
+	}
+	
+	public void add(String item) {
+		this.items.add(item);
+	}
+	
+	public void add(int index, String item) {
+		this.items.add(index, item);
+	}
+	
+	public void remove(int index) {
+		this.items.remove(index);
+	}
+	
+	public void printMenu()
+	{		
+        for (int i = 0; i < items.size(); i++) {
+            System.out.println((i + 1) + ". " + items.get(i));
+        }
+	}
+	
+	
+	public int count() {
+		return this.items.size();
+	}
+	
+	public int lastIndex() {
+		return this.count() - 1;
+	}
+	
+	public int executeMenu()
+	{
+		int scelta = 0;
+		if (this.count() > 0) 
+		{
+			do {
+				this.printMenu();
+				scelta = IO.getInt("Seleziona un'opzione: ", "Scelta non valida. Riprova." );
+				if (scelta < 1 || scelta > this.count()) {
+                    System.out.println("Scelta non valida. Riprova.");
+                }
+			} while (scelta < 1 || scelta > this.count());
+		}
+		return scelta;
+	}
+	
+	
+}
