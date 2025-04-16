@@ -2288,3 +2288,29 @@ public class Menu {
 	
 	
 }
+
+import classiMie.Menu;
+
+public class Biblioteca {
+
+	public static void main(String[] args) {
+		Menu m = new Menu();
+		m.add("LISTA LIBRI");
+		m.add("AGGIUNGI UN LIBRO");
+		m.add("CERCA LIBRI");		
+		m.add("ESCI");
+		
+		int scelta;
+		do {
+				scelta = m.executeMenu();
+				
+				
+				
+		} while ( scelta != m.count() );
+		
+		System.out.println("Arrivederci!");
+		
+
+	}
+
+}
