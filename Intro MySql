@@ -101,3 +101,53 @@ public class TestMySQL {
 			
 			// Esiste un comando dentro il nostro ResultSet rs ora che ci permette di sapere se ci sono risultati e peraltro ci posiziona proprio sui risultati.
 			// Infatti al momento non possiamo accedere ai dati, perchè non siamo "posizionati" su di essi.
+
+            // Nel momento in cui eseguiamo una query di questo tipo,
+			// vengono caricati i risultati (0 righe, 1 riga, 2 righe, ecc...) in un oggetto dentro ResultSet rs.
+			// E poi c'è una sorta di "PUNTATORE" che punta alla riga 1, 2, 3, ecc...
+			// All'inizio NON PUNTA A NESSUNA RIGA
+			
+			// per accedere ai dati della prima riga dobbiamo iniziare a "scorrere" le righe, posizionandoci sulla PROSSIMA!
+			// ogni volta che ci posizioneremo sulla PROSSIMA riga, il puntatore si sposterà sulla riga successiva.
+			// La prima volta che ci posizioniamo sulla PROSSIMA (e staresmo intanto su NESSUNA), ci posizioniamo sulla prima riga.
+			// CON rs.next(); // ci posizioniamo sulla prima riga o comunque sulla PROSSIMA
+			
+			// SE non ci sono righe, il comando rs.next() restituirà false.
+			// SE ci sono righe, il comando rs.next() restituirà true.
+			// DOPO il comando rs.next(), se ha restituito true il puntatore sarà posizionato sulla prossima riga (la 1, la 2, ecc...).
+			
+			// Da quel momento potremo accedere ai dati...
+			// Ma allora se è così potremmo fare un ciclo while per scorrere tutte le righe.
+			int i = 0; // Contatore righe
+			while (rs.next()) // finchè rs.next() da true, saremo nel ciclo e saremo sulla prossima riga..
+			{
+				i++; // Incrementiamo il contatore righe
+				// Ora accediamo ai dati... siamo sull x-ma riga
+				// Dobbamo conoscere la tabella e i suoi campi
+				int id = rs.getInt("id"); // id è il nome del campo
+				String nome = rs.getString("nome"); // nome è il nome del campo
+				String cognome = rs.getString("cognome"); // cognome è il nome del campo
+				String email = rs.getString("email"); // email è il nome del campo
+				double stipendio = rs.getDouble("stipendio"); // stipendio è il nome del campo
+				
+				// Ora possiamo stampare i dati
+				System.out.println("Riga: " + i); // Stampo il numero di riga
+				System.out.println("ID: " + id);
+				System.out.println("Nome: " + nome);
+				System.out.println("Cognome: " + cognome);
+				System.out.println("Email: " + email);
+				System.out.println("Stipendio: " + stipendio);
+				System.out.println("-------------------------------");
+			}
+			
+
+			
+			connection.close(); // Chiudiamo la connessione al database
+
+		} catch (Exception e) {
+			// Handle any errors that may have occurred
+			System.out.println("Errore... più nel dettaglio: " + e.getMessage());
+		}
+	}
+
+}
