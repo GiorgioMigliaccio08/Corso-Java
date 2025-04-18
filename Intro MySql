@@ -151,3 +151,120 @@ public class TestMySQL {
 	}
 
 }
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import classiMie.Menu;
+import classiMie.IO;
+
+public class TestMySQL {
+
+	public static void main(String[] args) {
+		
+		try {
+				Statement statement;
+				ResultSet rs;
+				Connection connection;
+				int scelta;
+				
+				// Load the MySQL JDBC driver
+				Class.forName("com.mysql.cj.jdbc.Driver"); // Questo comando carica il driver JDBC per MySQL
+							
+				String url = "jdbc:mysql://localhost:3306/azienda";
+				String user = "root";
+				String password = "";
+				connection = DriverManager.getConnection(url, user, password);
+				IO.println("CONNESSIONE RIUSCITA!!!");
+				
+				
+				Menu menu = new Menu();
+				menu.add("1. Visualizza dipendenti");
+				menu.add("2. Aggiungi dipendente");
+				menu.add("3. Esci");
+				do {
+							scelta = menu.executeMenu();
+							
+							switch (scelta) {
+							case 1: // Visualizza dipendenti
+								
+										statement = connection.createStatement();
+										
+										
+										rs = statement.executeQuery("SELECT * FROM dipendenti");
+										if (rs == null) {
+											
+											IO.println("Errore: problema con MYSQL");
+											return;
+										}
+										
+										int i = 0; // Contatore righe
+										while (rs.next()) // finchè rs.next() da true, saremo nel ciclo e saremo sulla prossima riga..
+										{
+											i++; // Incrementiamo il contatore righe
+											// Ora accediamo ai dati... siamo sull x-ma riga
+											// Dobbamo conoscere la tabella e i suoi campi
+											int id = rs.getInt("id"); // id è il nome del campo
+											String nome = rs.getString("nome"); // nome è il nome del campo
+											String cognome = rs.getString("cognome"); // cognome è il nome del campo
+											String email = rs.getString("email"); // email è il nome del campo
+											double stipendio = rs.getDouble("stipendio"); // stipendio è il nome del campo
+											
+											// Ora possiamo stampare i dati
+											IO.println("Riga: " + i); // Stampo il numero di riga
+											IO.println("ID: " + id);
+											IO.println("Nome: " + nome);
+											IO.println("Cognome: " + cognome);
+											IO.println("Email: " + email);
+											IO.println("Stipendio: " + stipendio);
+											IO.println("-------------------------------");
+										}
+								
+								
+								break;
+							case 2: // Aggiungi dipendente
+								
+									String nome = IO.getString("Inserisci il nome del dipendente: ");
+									String cognome = IO.getString("Inserisci il cognome del dipendente: ");
+									String email = IO.getString("Inserisci l'email del dipendente: ");
+									double stipendio = IO.getDouble("Inserisci lo stipendio del dipendente: ");
+									
+									statement = connection.createStatement();
+									String sql = "INSERT INTO dipendenti (nome, cognome, email, stipendio) VALUES ('" + nome + "', '" + cognome + "', '" + email + "', '" + stipendio + "')";
+									int rowsInserted = statement.executeUpdate(sql);
+									if (rowsInserted > 0) {
+										IO.println("Dipendente aggiunto con successo!");
+									} else {
+										IO.println("Errore: dipendente non aggiunto");
+									}
+								
+								
+								break;
+							case 3: // Esci
+								IO.println("Uscita dal programma..."); // Messaggio di chiusura");
+								break;
+							default:
+								IO.println("Scelta non valida");
+							}
+							
+					        IO.getString("Premi invio per continuare...");	
+							
+				} while (scelta != menu.count()); // Finchè non scegliamo di uscire
+				
+				connection.close(); // Chiudiamo la connessione al database
+				
+				IO.println("Arrivederci!"); // Messaggio di chiusura");
+				
+
+			
+			
+
+		} catch (Exception e) {
+			// Handle any errors that may have occurred
+			IO.println("Errore... più nel dettaglio: " + e.getMessage());
+		}
+	}
+
+}
