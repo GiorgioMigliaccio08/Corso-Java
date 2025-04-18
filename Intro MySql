@@ -32,3 +32,72 @@ public class TestMySQL {
 	}
 
 }
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class TestMySQL {
+
+	public static void main(String[] args) {
+		
+		try {
+			// Load the MySQL JDBC driver
+			Class.forName("com.mysql.cj.jdbc.Driver"); // Questo comando carica il driver JDBC per MySQL
+			
+			// Se arriviamo qui, significa che il driver è stato caricato correttamente
+			// Altrimenti verrebbe sollevata un'eccezione e scaterebbe il blocco catch
+			
+			// Per connetterci al database, dobbiamo creare una stringa di connessione
+			// la strnga è costituita così: jdbc:mysql://<host>:<port>/<database_name>
+			
+			String url = "jdbc:mysql://localhost:3306/azienda";
+			String user = "root";
+			String password = "";
+			Connection connection = DriverManager.getConnection(url, user, password);
+			// Se arriviamo qui, significa che la connessione è stata stabilita correttamente
+			System.out.println("CONNESSIONE RIUSCITA!!!");
+			
+			// Eseguiamo una query di test per verificare la connessione
+			// Facciamo una select * from dipendenti
+			// Creiamo un oggetto Statement per eseguire la query
+			// Uno Statement è un oggetto che ci permette di eseguire query SQL
+			// Lo possiamo inseire con
+			// java.sql.Statement statement = connection.createStatement();
+			// oppure importando java.sql.Statement
+			// così da poter scrivere direttamente
+			// Statement statement = connection.createStatement();
+			// statement.executeQuery("SELECT * FROM dipendenti");
+			
+			Statement statement = connection.createStatement();
+			
+			// Per ricevere i dati ci serve un ResultSet
+			
+			ResultSet rs; // Qui dento ci faremo finire i dati che ci interessano
+			
+			// Eseguiamo la query
+			
+			
+			rs = statement.executeQuery("SELECT * FROM dipendenti");
+			/* Adesso: 
+                         - SE rs è NULL, vuol dire che qualcosa è proprio andato storto...
+                         - SE rs non è NULL ma non contiene righe, vuol dire che non ci sono dati
+                 Quindi prima veidamo se è NULL, perchè in tal caso è meglio non continuare proprio e avvertire dell'errore
+			 
+			 
+			 */
+			
+			if (rs == null) {
+				
+				System.out.println("Errore: problema con MYSQL");
+				return;
+			}
+			
+			// Se arriviamo qui rd non è NULL, quindi possiamo continuare
+			
+			// ora... Quando eseguiamo una select non sappiamo quanti risultati ci sono.
+			// Non sappiamo nemmeno se ci sono risultati. Per esempio la tabella potrebbe essere vuota.
+			
+			// Esiste un comando dentro il nostro ResultSet rs ora che ci permette di sapere se ci sono risultati e peraltro ci posiziona proprio sui risultati.
+			// Infatti al momento non possiamo accedere ai dati, perchè non siamo "posizionati" su di essi.
