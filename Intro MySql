@@ -364,3 +364,35 @@ public class TestMySQLtre {
 	}
 
 }
+
+public class TestMySQLquattro {
+
+	public static void main(String[] args) {
+		
+		try {
+			// Load the MySQL JDBC driver
+			Class.forName("com.mysql.cj.jdbc.Driver"); // Questo comando carica il driver JDBC per MySQL
+			
+			// Se arriviamo qui, significa che il driver è stato caricato correttamente
+			// Altrimenti verrebbe sollevata un'eccezione e scaterebbe il blocco catch
+			
+			// Per connetterci al database, dobbiamo creare una stringa di connessione
+			// la strnga è costituita così: jdbc:mysql://<host>:<port>/<database_name>
+			
+			String url = "jdbc:mysql://localhost:3306/azienda";
+			String user = "root";
+			String password = "";
+			Connection connection = DriverManager.getConnection(url, user, password);
+			// Se arriviamo qui, significa che la connessione è stata stabilita correttamente
+			System.out.println("CONNESSIONE RIUSCITA!!!");
+
+			
+			connection.close(); // Chiudiamo la connessione al database
+
+		} catch (Exception e) {
+			// Handle any errors that may have occurred
+			System.out.println("Errore... più nel dettaglio: " + e.getMessage());
+		}
+	}
+
+}
