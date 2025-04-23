@@ -462,3 +462,39 @@ package classiMie;
  *  per recuperare l'ultimo ID inserito, usiamo il metodo getLastInsertID
  *  db.getLastInsertID();
  *  
+*  per fare una query di cancellazione, usiamo il metodo DeleteQuery
+ *  db.DeleteQuery("DELETE FROM football_players WHERE id = 1");
+ *  
+ *  per fare una query di cancellazione con parametri protetti, usiamo il metodo DeleteProtectedQuery
+ *  db.DeleteProtectedQuery("DELETE FROM football_players WHERE id = ?", new String[] {"1"});
+ *  
+ *  per recuperare l'errore, usiamo il metodo getErrorString
+ *  db.getErrorString();
+ *  
+ *  ATTENZIONE:
+ *  perchè tutto funzioni è necessario che siano presenti o raggiungibili le librerie del driver mysql
+ *  e che siano incluse nel progetto nel suo classpath
+ *  
+ * 
+ * */
+
+
+ import java.sql.Connection;
+ import java.sql.PreparedStatement;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
+ import java.sql.Statement;
+
+public class MySQL {
+	
+	private String dbhost;
+	private String dbport;
+	private String dbname;
+	private String dbusername;
+	private String dbpassword;
+	private Connection dbConn;
+	private String errorString;
+	private Statement stmt;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	private Integer lastInsertID;
