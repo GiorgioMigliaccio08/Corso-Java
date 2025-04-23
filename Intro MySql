@@ -498,3 +498,59 @@ public class MySQL {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private Integer lastInsertID;
+
+public MySQL(String dbhost, String dbport, String dbname, String dbusername, String dbpassword) {
+		this.dbhost = dbhost;
+		this.dbport = dbport;
+		this.dbname = dbname;
+		this.dbusername = dbusername;
+		this.dbpassword = dbpassword;
+		this.Connect();
+	}
+	
+	public MySQL()
+	{
+		this.dbhost = null;
+		this.dbport = null;
+		this.dbname = null;
+		this.dbusername = null;
+		this.dbpassword = null;
+	}
+	
+	public String getErrorString() {
+		return errorString;
+	}
+	
+	public void CleanErrorString() {
+		this.errorString = null;
+	}
+	
+	private void SetError(String error) {
+		this.errorString = error;
+	}
+	
+	public boolean Connect()
+	{
+		this.CleanErrorString();
+		try {
+			  String connectionstring =  "jdbc:mysql://" + this.dbhost + ":" + this.dbport + "/" + this.dbname;
+			  this.dbConn = java.sql.DriverManager.getConnection(connectionstring, this.dbusername, this.dbpassword);
+			  return true;
+		}
+		catch (SQLException e) {
+			this.SetError(e.getMessage());
+			return false;
+		}
+		
+	}
+	
+	public boolean isConnected() {
+		this.CleanErrorString();
+		try {
+			if (this.dbConn == null) return false;
+			return this.dbConn.isValid(0);
+		} catch (SQLException e) {
+			this.SetError(e.getMessage());
+			return false;
+		}
+	}
