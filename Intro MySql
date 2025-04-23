@@ -396,3 +396,69 @@ public class TestMySQLquattro {
 	}
 
 }
+
+package classiMie;
+
+/*   
+ * RIEPILOGO DEI METODI E DI COME FUNZIONA LA CLASSE
+ * 
+ *  per creare un oggetto MySQL bisogna passare i parametri del database
+ *  
+ *  faremo 
+ *  MySQL db = new MySQL("localhost", "3306", "esercizio", "root", "");
+ *  
+ *  Se usiamo il costruttore senza parametri, dobbiamo settare i parametri con i metodi set
+ *  dovremo poi chiamare il metodo Connect per connetterci al database
+ *  così
+ *  db.Connect();
+ *  
+ *  per controllare se siamo connessi, usiamo il metodo isConnected
+ *  db.isConnected();
+ *  
+ *  per chiudere la connessione, usiamo il metodo Close
+ *  db.Close();
+ *  
+ *  per fare una query di selezione, usiamo il metodo SelectQuery
+ *  
+ *  db.SelectQuery("SELECT * FROM football_players");
+ *  oppure
+ *  db.SelectQuery("SELECT * FROM football_players WHERE id = 1");
+ *  
+ *  per fare una query di selezione con parametri PROTETTI, usiamo il metodo SelectProtectedQuery
+ *  
+ *  db.SelectProtectedQuery("SELECT * FROM football_players WHERE id = ?", new String[] {"1"});
+ *  
+ *  per scorrere i risultati, usiamo i metodi first, last, next, previous, absolute
+ *  db.first()  // ci posiziona sul primo record
+ *  db.last()  // ci posiziona sull'ultimo record
+ *  db.next()  // ci sposta al record successivo
+ *  db.previous()  // ci sposta al record precedente
+ *  db.absolute(3)  // ci sposta al record 3
+ *  db.seek(3)  // uguale ad absolute
+ *  
+ *  quando siamo posizionati su un record, possiamo estrarre i dati con i metodi getString, getInt, getDouble, getFloat, getBoolean
+ *  esempio
+ *  db.getString("first_name");
+ *  db.getInt("id");
+ *  db.getDouble("salary");
+ *  db.getFloat("height");
+ *  ecc
+ *  
+ *  per contare i record, usiamo il metodo count
+ *  db.count();
+ *  
+ *  per fare una query di aggiornamento, usiamo il metodo UpdateQuery
+ *  db.UpdateQuery("UPDATE football_players SET salary = 2000 WHERE id = 1");
+ *  
+ *  per fare una query di aggiornamento con parametri protetti, usiamo il metodo UpdateProtectedQuery
+ *  db.UpdateProtectedQuery("UPDATE football_players SET salary = ? WHERE id = ?", new String[] {"2000", "1"});
+ *  
+ *  per fare una query di inserimento, usiamo il metodo InsertQuery
+ *  db.InsertQuery("INSERT INTO football_players(first_name, last_name) VALUES('Mario', 'Rossi')");
+ *  
+ *  per fare una query di inserimento con parametri protetti, usiamo il metodo InsertProtectedQuery
+ *  db.InsertProtectedQuery("INSERT INTO football_players(first_name, last_name) VALUES(?, ?)", new String[] {"Mario", "Rossi"});
+ *  
+ *  per recuperare l'ultimo ID inserito, usiamo il metodo getLastInsertID
+ *  db.getLastInsertID();
+ *  
