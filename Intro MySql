@@ -554,3 +554,189 @@ public MySQL(String dbhost, String dbport, String dbname, String dbusername, Str
 			return false;
 		}
 	}
+
+		public Integer getInt(String field) {
+		this.CleanErrorString();
+		if (this.rs == null) {
+			this.SetError("ResultSet non inizializzato");
+			return -1;
+		} else {
+			try {
+				return this.rs.getInt(field);
+			} catch (SQLException e) {
+				this.SetError(e.getMessage());
+				return null;
+			}
+		}
+	}
+	
+	public Double getDouble(String field) {
+		this.CleanErrorString();
+		if (this.rs == null) {
+			this.SetError("ResultSet non inizializzato");
+			return null;
+		} else {
+			try {
+				return this.rs.getDouble(field);
+			} catch (SQLException e) {
+				this.SetError(e.getMessage());
+				return null;
+			}
+		}
+	}
+	
+	public Float getFloat(String field) {
+		this.CleanErrorString();
+		if (this.rs == null) {
+			this.SetError("ResultSet non inizializzato");
+			return  null;
+		} else {
+			try {
+				return this.rs.getFloat(field);
+			} catch (SQLException e) {
+				this.SetError(e.getMessage());
+				return null;
+			}
+		}
+	}
+	
+	public Boolean getBoolean(String field) {
+		this.CleanErrorString();
+		if (this.rs == null) {
+			this.SetError("ResultSet non inizializzato");
+			return null;
+		} else {
+			try {
+				return this.rs.getBoolean(field);
+			} catch (SQLException e) {
+				this.SetError(e.getMessage());
+				return null;
+			}
+		}
+	}
+
+	
+	
+	public Integer count()
+	{
+		this.CleanErrorString();
+		if (this.rs == null) {
+			this.SetError("ResultSet non inizializzato");
+			return null;
+		} 
+		else 
+		{
+			
+			try {
+					int actualpos = this.rs.getRow();
+					this.rs.last();
+					int count = this.rs.getRow();
+					this.rs.absolute(actualpos);
+					return count;
+			} 
+			catch (SQLException e) 
+			{
+				this.SetError(e.getMessage());
+				return null;
+			}
+		}
+	}
+		
+	
+	
+	
+	public boolean UpdateProtectedQuery(String query, String[] values) {
+		this.CleanErrorString();
+		try {
+			  //System.out.println("Query: " + query+"... prepariamo il PreparedStatement");
+			  this.pstmt = this.dbConn.prepareStatement(query);
+			  //System.out.println("PreparedStatement pronto... inseriamo i valori");
+			  for (int i = 0; i < values.length; i++) {
+				  this.pstmt.setString(i+1, values[i]);
+				 // System.out.println("Valore " + i + " inserito (" + values[i] + ")");
+              }
+			  //System.out.println("Valori inseriti... eseguiamo la query");
+			  this.pstmt.executeUpdate();
+			  //System.out.println("Query eseguita correttamente");
+			  return true;
+			} catch (SQLException e) {
+				this.SetError(e.getMessage());
+				//System.out.println("Errore: " + e.getMessage());
+				return false;
+		}
+	}
+	
+	public boolean UpdateQuery(String query) {
+		this.CleanErrorString();
+		try {
+				this.stmt = this.dbConn.createStatement();
+				this.stmt.executeUpdate(query);
+				return true;
+			} 
+		catch (SQLException e) 
+		{
+				this.SetError(e.getMessage());
+				return false;
+		}
+	}
+	
+	public boolean InsertProtectedQuery(String query, String[] values) {
+		this.CleanErrorString();
+		try {
+				this.pstmt = this.dbConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+				for (int i = 0; i < values.length; i++) {
+					this.pstmt.setString(i + 1, values[i]);
+				}
+				this.pstmt.executeUpdate();
+				// recuperiamo l'ID
+				this.rs = this.pstmt.getGeneratedKeys();
+				if (this.rs.next()) {
+					this.lastInsertID = this.rs.getInt(1);
+				}
+				
+				
+			return true;
+		} catch (SQLException e) {
+			this.SetError(e.getMessage());
+			return false;
+		}
+	}
+	
+	public boolean InsertQuery(String query) {
+		return this.InsertProtectedQuery(query, new String[] {});
+	}
+	
+	public Integer getLastInsertID() {
+		return this.lastInsertID;
+	}
+	
+	public boolean DeleteQuery(String query) {
+        this.CleanErrorString();
+        try {
+            this.stmt = this.dbConn.createStatement();
+            this.stmt.executeUpdate(query);
+            return true;
+        } catch (SQLException e) {
+            this.SetError(e.getMessage());
+            return false;
+        }
+    }
+	
+	public boolean DeleteProtectedQuery(String query, String[] values) {
+		this.CleanErrorString();
+		try {
+			this.pstmt = this.dbConn.prepareStatement(query);
+			for (int i = 0; i < values.length; i++) {
+				this.pstmt.setString(i + 1, values[i]);
+			}
+			this.pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			this.SetError(e.getMessage());
+			return false;
+		}
+	}
+	
+	
+	
+}
